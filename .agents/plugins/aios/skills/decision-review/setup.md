@@ -4,4 +4,4 @@ Optional. `/decision-review` works with every field empty. It offers to fill thi
 
 - **Evidence sources:** <!-- folders or docs to read for context, e.g. knowledge/pages/, a project folder, a doc link -->
 - **Where reviews are saved:** <!-- e.g. reviews/. Empty = the current folder -->
-- **Check-back reminders:** <!-- a calendar event, a tracker issue, or "none" -->
+- **Check-back reminders:** <!-- a calendar event, a tracker issue, an Antigravity schedule, or "none" -->

@@ -9,7 +9,7 @@ Filled on first run by `/meetings-to-issues`. Edit any time. Leave a field empty
 
 ## Tools
 
-The tracker's tools for each job, fully qualified (e.g. `Linear:save_issue`).
+The tracker's MCP or plugin tools for each job, fully qualified (e.g. `linear:save_issue`).
 
 | Job | Tool |
 |---|---|

@@ -1,7 +1,6 @@
 ---
 name: meetings-to-issues
-description: Turns meeting notes into tracker issues, logged decisions and parked ideas. Matches each next step to an owner and project, checks for duplicates, shows one proposal and creates only after a yes. Works with any notes (Granola, Fireflies, Zoom or Meet summaries, typed notes) and any tracker connected to Claude (Linear, Jira, Asana). Use when meeting notes get pasted and the ask is to "turn this into issues" or "ticket this", or run /meetings-to-issues.
-disable-model-invocation: true
+description: Turns meeting notes into tracker issues, logged decisions and parked ideas. Matches each next step to an owner and project, checks for duplicates, shows one proposal and creates only after a yes. Works with any notes (Granola, Fireflies, Zoom or Meet summaries, typed notes) and any tracker connected via an Antigravity plugin or MCP server (Linear, Jira, Asana). Use when meeting notes get pasted and the ask is to "turn this into issues" or "ticket this", or run /meetings-to-issues.
 ---
 
 # meetings-to-issues
@@ -20,9 +19,9 @@ Your team, people, projects and destinations live in [setup.md](setup.md), next 
 
 ## Steps
 
-1. **Check setup.** Read `setup.md`. If no tracker is connected to Claude, stop and say so. If any field is empty:
+1. **Check setup.** Read `setup.md`. If no tracker plugin or MCP server is connected, stop and tell the user how to connect one (via Antigravity **Customizations > Marketplace** or `mcp_config.json`). If any field is empty:
    a. Look up what the tracker can tell you: team, users, projects, labels, states. Note the tool names used for each job.
-   b. Ask the user, in one message, for what the tracker can't tell you: the names people use for each other in meetings, what each project is for, Where decisions and parked ideas go is pre-filled (today's log); just confirm it, and change it only if the user asks.
+   b. Ask the user, in one message, for what the tracker can't tell you: the names people use for each other in meetings, what each project is for. Where decisions and parked ideas go is pre-filled (today's log); just confirm it, and change it only if the user asks.
    c. Show the filled `setup.md`. Write it on a yes.
    Done when: every field in `setup.md` is filled or marked "none".
 

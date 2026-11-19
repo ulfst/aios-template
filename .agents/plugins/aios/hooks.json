@@ -1,0 +1,11 @@
+{
+  "aios-catch-up-nudge": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "./hooks/catch-up-nudge.sh",
+        "timeout": 10
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "aios",
+  "displayName": "Personal AIOS",
+  "version": "1.0.0",
+  "description": "Personal AI Operating System skills and session-start catch-up hook for Google Antigravity.",
+  "keywords": [
+    "aios",
+    "product-management",
+    "knowledge-base",
+    "decision-review",
+    "onboarding"
+  ],
+  "suggestedPrompts": [
+    "/onboard",
+    "/catching-up",
+    "/decision-review"
+  ]
+}

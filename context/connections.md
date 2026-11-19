@@ -14,6 +14,6 @@ Registry of every system your AIOS can reach. Filled by `/onboard` and expanded 
 
 **Scope** is what the AI may read there, and for what: e.g. `5 sent emails, writing style only` or `catch-ups: all project channels`. `/catching-up` scans every connected tool unless its Scope limits it to another purpose.
 
-**Mechanism options:** `connector` (built-in, a few clicks in your AI app's settings — try this first), `mcp` (MCP server), `script` (Python/Bash hitting an API, in `scripts/`), `export` (CSV/JSON dump pipeline), `key+ref` (`.env` key + `references/{tool}-api.md` guide), `not yet connected`.
+**Mechanism options:** `plugin` (Antigravity Marketplace plugin in **Customizations > Marketplace**, e.g. Gmail, Google Drive, Sheets, Slides — try this first), `mcp` (MCP server in `~/.gemini/config/mcp_config.json` or a plugin's `mcp_config.json`), `script` (Python/Bash hitting an API, in `scripts/`), `export` (CSV/JSON dump pipeline), `key+ref` (`.env` key + `references/{tool}-api.md` guide), `not yet connected`.
 
 When you wire a new tool, also save `references/{tool}-api.md` capturing endpoints, auth flow, and common queries — researched-once-saved-forever.

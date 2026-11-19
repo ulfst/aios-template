@@ -20,22 +20,21 @@ Write down what it does, and what it doesn't do. Park the rest as v2.
 - **Test:** is there a "Not in scope" line?
 
 ### 3. You pull the trigger
-Two ways a skill can start: **you** call it (`/name`), or **the AI** decides when to call it based on its description.
-- **Default today: you call it.** Nothing to debug when it doesn't fire.
-- Either way, the description says **what it does + when to use it**, with the words you'd actually type.
-- **Test:** would a colleague know when to reach for it from the description alone?
+Two ways a skill can start: **you** call it (`/name`), or **Antigravity** loads it automatically based on its `description` (progressive disclosure).
+- Either way, the `description` says **what it does + when to use it**, with the words you'd actually type.
+- **Test:** would a colleague—and the model—know when to reach for it from the description alone?
 
 ### 4. Steps with finish lines
 Numbered steps in order. Every step ends on **done when**: a condition you could check.
 - Bad: "Review the backlog."
 - Good: "Every open issue is tagged keep, drop or later."
-- Templates, definitions and lookup tables go in a separate **reference** section, not mixed into the steps.
+- Templates, definitions and lookup tables go in a separate **reference** section (or a linked file in the skill folder), not mixed into the steps.
 - **Before anything leaves the chat** (sends, creates, edits a shared doc), one step shows you the draft and waits for your **yes**. `meetings-to-issues`: map → propose → confirm → create.
-- **Test:** could the AI tell "done" from "not done" at every step? Can it change anything outside the chat before you approve?
+- **Test:** could the agent tell "done" from "not done" at every step? Can it change anything outside the chat before you approve?
 
 ### 5. Build, test, iterate
 Your first draft is a v0. The skill gets good by running it on real work and fixing what breaks.
-- Do the task once by hand with Claude, turn it into a skill, run it on a **new** real input, fix, run again.
+- Do the task once by hand with your agent, turn it into a skill, run it on a **new** real input, fix, run again.
 - When a run goes right, keep that input and output as an **example** in the skill.
 - When you fix, also cut: delete any line that didn't change what the AI did.
 - **Test:** has it run on at least two real inputs, and did you change something after the first?
@@ -44,13 +43,12 @@ Your first draft is a v0. The skill gets good by running it on real work and fix
 
 ## Skeleton to copy
 
-File: `.claude/skills/<your-skill-name>/SKILL.md`
+File: `.agents/skills/<your-skill-name>/SKILL.md` (workspace) or `~/.gemini/config/skills/<your-skill-name>/SKILL.md` (global).
 
 ```markdown
 ---
 name: turning-notes-into-tickets
 description: Turns meeting notes into draft Linear tickets with owner and project. Use when meeting notes get pasted or asked to "ticket this".
-disable-model-invocation: true
 ---
 
 # turning-notes-into-tickets
@@ -78,8 +76,8 @@ disable-model-invocation: true
 
 | Step | What you do | Time |
 |---|---|---|
-| 1 | Do the task **once** with Claude in chat, on real work. | 10 min |
-| 2 | Ask Claude: "Turn what we just did into a skill using the skeleton in this doc." | 3 min |
+| 1 | Do the task **once** with Antigravity in chat, on real work. | 10 min |
+| 2 | Ask the agent: "Turn what we just did into a skill using the skeleton in this doc." | 3 min |
 | 3 | Read it. Cut anything you wouldn't say to a new hire. | 5 min |
 | 4 | Run it on a **different** real input. Fix what broke. Run again. | 10 min |
 | 5 | Check it against the pre-flight checklist below. Fix what's missing. | 2 min |
@@ -90,7 +88,7 @@ disable-model-invocation: true
 
 - [ ] Does one job I've done 3+ times
 - [ ] "Not in scope" line exists
-- [ ] I start it with `/name`. Description = what + when, in words I'd type
+- [ ] `name` is lowercase/hyphenated; `description` = what + when, in words I'd type
 - [ ] Numbered steps, each with a "done when"
 - [ ] Waits for my yes before touching anything outside the chat
 - [ ] Ran it on 2+ real inputs and fixed something after the first

@@ -4,7 +4,6 @@
 *.log
 __pycache__/
 node_modules/
-.claude/settings.local.json
 audits/
 
 # Raw source material (interviews, transcripts, docs you drop in).
@@ -14,4 +13,4 @@ knowledge/sources/*
 !knowledge/sources/**/.gitkeep
 
 # catching-up skill: time of the last scan, per machine
-.claude/state/
+.agents/state/

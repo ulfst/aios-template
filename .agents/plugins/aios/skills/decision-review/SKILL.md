@@ -1,7 +1,6 @@
 ---
 name: decision-review
-description: Reviews a decision before the user commits to it. Finds the assumptions they haven't said out loud, checks them against the evidence with an agent that never sees their reasoning, proposes the cheapest test for each, and records their verdict and a date to check back. Use when asked for a decision review, to stress-test a decision or plan, or to check what a decision rests on; or run /decision-review.
-disable-model-invocation: true
+description: Reviews a decision before the user commits to it. Finds the assumptions they haven't said out loud, checks them against the evidence with an independent subagent that never sees their reasoning, proposes the cheapest test for each, and records their verdict and a date to check back. Use when asked for a decision review, to stress-test a decision or plan, or to check what a decision rests on; or run /decision-review.
 ---
 
 # decision-review
@@ -60,11 +59,11 @@ Read what the user gave you, the evidence sources in `setup.md`, and any files t
 
 ### 2. Weak spots
 
-**a. Evidence, blind.** With evidence files, dispatch one subagent with the paths, the decision sentence and the user's stop-1 facts, never their reasoning:
+**a. Evidence, blind.** With evidence files, invoke one independent read-only subagent (`invoke_subagent` with `TypeName: "research"`) passing only the file paths, the decision sentence, and the user's Stop 1 facts—never their reasoning:
 
 > Grade each source strong, medium or weak (behaviour beats opinion, a test beats a correlation, recent beats old, a plan is not evidence). List what bears on this decision, each with a quote of 15 words at most and its file. Then the top 3 things no source can tell us. Return text; write no files.
 
-Without files, weigh the user's account yourself, do the arithmetic their numbers allow, and search the web only for outside facts the decision needs, marked "unverified".
+Without files, weigh the user's account yourself, do the arithmetic their numbers allow, and use `search_web` only for outside facts the decision needs, marked "unverified".
 
 **b. Hidden assumptions, meanwhile.** Beliefs that make the decision wrong if false. Ask: do the people it's for want it, can we pull it off, does the payoff beat the cost, what else does it change? Hunt the implied ones: a causal reading of a number, where freed time or money really goes, what the choice gives up. Drop ones the user already said, unless the evidence contradicts them.
 
@@ -91,7 +90,7 @@ A card the user adds gets its check and pass mark shown in one line for a yes. D
 
 ### 4. Wrap up
 
-Reply with the doc link, verdict and check-back date. Draft a `decision:` line with the verdict, the doc name and the check-back date for today's log (`knowledge/log/YYYY-MM-DD.md`), in a `## HH:MM — decision-review-<slug>` block ending with `- done:`, per `knowledge/RULES.md`; add it on a yes. If `setup.md` names a reminder tool, draft the reminder too. If not, ask once: "Want a check-back reminder, as a calendar event or a tracker issue?" On a yes, fill `setup.md` and create it. Then stop: running the checks is the user's call.
+Reply with the doc link, verdict and check-back date. Draft a `decision:` line with the verdict, the doc name and the check-back date for today's log (`knowledge/log/YYYY-MM-DD.md`), in a `## HH:MM — decision-review-<slug>` block ending with `- done:`, per `knowledge/RULES.md`; add it on a yes. If `setup.md` names a reminder tool (or Antigravity `schedule`), draft the reminder too. If not, ask once: "Want a check-back reminder, as a calendar event, tracker issue, or Antigravity schedule?" On a yes, fill `setup.md` and create it. Then stop: running the checks is the user's call.
 
 ## Check-back
 

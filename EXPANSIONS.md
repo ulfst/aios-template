@@ -10,15 +10,15 @@ Your AIOS structure should look like a small, well-run practice. Not a hoarder's
 
 | Folder / file | Purpose |
 |---|---|
-| `CLAUDE.md` | Root operating manual. Filled by `/onboard`. Edit when your role/voice changes. |
+| `GEMINI.md` | Root operating manual. Filled by `/onboard`. Edit when your role/voice changes. |
 | `context/` | About you, your product, your priorities. Filled by `/onboard`. |
 | `context/intake.md` | `/onboard`'s progress log: what's confirmed, skipped or pending. Re-run `/onboard` any time to update. |
 | `context/connections.md` | Registry of every system your AIOS can reach. |
 | `knowledge/` | Log, sources, compiled pages, and index — the knowledge layer. Rules in `knowledge/RULES.md`. |
 | `references/` | Read on demand: skill guide, frameworks, API guides, SOPs as you build them. |
 | `archive/` | Old files. Don't delete — move here. |
-| `.claude/skills/` | `/onboard`, `/catching-up`, `/meetings-to-issues`, `/decision-review`, `/go-deeper`, plus whatever you author as needs come up. |
-| `.claude/hooks/` + `.claude/settings.json` | Session-start nudge: asks for a catch-up when the last one is over 4 hours old. |
+| `.agents/plugins/aios/` | Bundled Antigravity plugin containing the 5 starter skills (`/onboard`, `/catching-up`, `/meetings-to-issues`, `/decision-review`, `/go-deeper`) and the `SessionStart` catch-up hook (`hooks.json` + `hooks/catch-up-nudge.sh`). |
+| `.agents/skills/` | Your custom workspace skills as needs come up. |
 | `EXPANSIONS.md` | This file. |
 
 ---
@@ -34,9 +34,9 @@ Your AIOS structure should look like a small, well-run practice. Not a hoarder's
 | `brand-assets/` | You generate visual content (slides, one-pagers, decks) | Centralizes logos, palettes, fonts — the AIOS reaches in instead of guessing |
 | `references/sops/` | A recurring process gets re-run by someone new | Standard operating procedures the AIOS reads to run things consistently |
 | `references/{tool}-api.md` | You connect a new API or MCP and figure out how it works | Researched once, saved forever — future skills don't re-research |
-| `scripts/` | You write Python or Bash to hit APIs not covered by MCPs | Most people's second connection is a script, not an MCP |
-| `.claude/agents/` | You need a sub-assistant for repeatable, multi-step research/writing | Agents run in their own context — keeps your main session lean |
-| Sub-OS folders (e.g. `roadmap-os/`) | You have a vertical with its own data, sheets, transcripts, scripts | Isolation pattern — vertical workflows get their own scoped `CLAUDE.md` + skills |
+| `scripts/` | You write Python or Bash to hit APIs not covered by MCPs, or `run_workflow` orchestration scripts | Most people's second connection is a script, not an MCP |
+| `.agents/skills/` | A task repeats 3+ times | Add workspace skills or subagent-delegating workflows (`define_subagent` / `invoke_subagent`) without cluttering the root plugin |
+| Sub-OS folders (e.g. `roadmap-os/`) | You have a vertical with its own data, sheets, transcripts, scripts | Isolation pattern — vertical workflows get their own scoped `GEMINI.md` + skills |
 
 ### Knowledge base extensions
 
@@ -64,7 +64,7 @@ When each surface gets routinely touched:
 - `references/sops/` — when a process gets re-run by someone new, write the SOP
 - `context/connections.md` — every time a new tool gets wired in, add a row
 - `references/{tool}-api.md` — same time as the `connections.md` update; capture the API once
-- `CLAUDE.md` — quarterly review; rewrite the persona/priorities section as things change
+- `GEMINI.md` — quarterly review; rewrite the persona/priorities section as things change
 
 ---
 
@@ -76,7 +76,7 @@ When each surface gets routinely touched:
 - **No pre-created empty folders.** The AIOS will tell you when it's time.
 - **No hand-edits to the log, sources, or index.** And no page edits outside a compile — see `knowledge/RULES.md`, Never.
 - **No parallel `decisions.md`.** The log is the one ground truth for decisions.
-- **One `CLAUDE.md` at the root.** Sub-OS folders may have scoped ones; the root is canonical.
+- **One `GEMINI.md` at the root.** Sub-OS folders may have scoped ones; the root is canonical.
 
 ---
 
